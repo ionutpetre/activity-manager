@@ -26,7 +26,23 @@ router.get('/:userId', function(req, res) {
         res.json(error ? {
             'error': error.toString()
         } : {
-            'doc': doc
+            'doc': doc[0]
+        });
+    });
+});
+
+/*
+ * GET activities by user id
+ */
+router.get('/:userId/activities/', function(req, res) {
+    var activities = req.db.get('activities');
+    activities.find({
+        "participants._id": req.params.userId
+    }, function(error, docs) {
+        res.json(error ? {
+            'error': error.toString()
+        } : {
+            'docs': docs
         });
     });
 });

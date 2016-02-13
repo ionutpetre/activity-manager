@@ -10,6 +10,7 @@ var db = monk('localhost:27017/activityManager');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var activities = require('./routes/activities');
 
 var app = express();
 
@@ -33,6 +34,7 @@ app.use(function(req, res, next) {
 
 app.use('/', routes);
 app.use('/rest/users', users);
+app.use('/rest/activities', activities);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
