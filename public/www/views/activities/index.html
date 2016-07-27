@@ -1,0 +1,30 @@
+<ion-view view-title="Activities" class="activities">
+  
+  <ion-nav-buttons side="primary">
+    <button ui-sref="addActivity" class="button button-icon ion-plus-circled"></button>
+  </ion-nav-buttons>
+
+  <ion-nav-buttons side="secondary">
+    <button ng-click="logout()" class="button button-icon ion-log-out"></button>
+  </ion-nav-buttons>
+
+  <div class="bar bar-subheader item-input-inset bar-light">
+    <label class="item-input-wrapper">
+    <i class="icon ion-search placeholder-icon"></i>
+    <input type="search" ng-model="searchedText" placeholder="Search">
+    </label>
+  </div>
+
+  <ion-content class="has-subheader">
+    <ion-refresher on-refresh="getUserActivities(user._id)"></ion-refresher>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-class="activity.finished? 'item-light' : 'item-energized'" 
+      ng-repeat="activity in activities | orderBy: finished | filter: searchedText" type="item-text-wrap" ui-sref="showActivity({activityId: activity._id})" title="Posted by {{activity.owner.firstName}} {{activity.owner.lastName}} at {{activity.createdTime | date:'medium'}}">
+        <img ng-src="{{activity.owner.picture}}" >
+        <h2>{{activity.title}} ({{activity.amount / activity.participants.length}} / {{activity.amount}} lei)</h2>
+        <p>{{activity.description}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

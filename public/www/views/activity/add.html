@@ -1,0 +1,29 @@
+<ion-view view-title="Add activity" class="addActivity">
+  <ion-nav-buttons side="secondary">
+    <button ng-click="logout()" class="button button-icon ion-log-out"></button>
+  </ion-nav-buttons>
+  <ion-content class="padding">
+  	<div class="list">
+	  <label class="item item-input item-stacked-label">
+	    <span class="input-label">Title</span>
+	    <input type="text" placeholder="Title" ng-model="activity.title">
+	  </label>
+	  <label class="item item-input item-stacked-label">
+	    <span class="input-label">Description</span>
+	    <textarea placeholder="Description" ng-model="activity.description"></textarea>
+	  </label>
+	  <label class="item item-input item-stacked-label">
+	    <span class="input-label">Ammount</span>
+	    <input type="number" min="0" max="2000" placeholder="Ammount" ng-model="activity.amount">
+	  </label>
+	  <label class="item item-input item-select item-stacked-label">
+	    <span class="input-label">Participants</span>
+	   	<ion-list type="list-inset">
+	   		<ion-item ng-repeat="participant in participants">
+		  		<ion-checkbox ng-model="participant.selected">{{ participant.firstName}} {{participant.lastName}}</ion-checkbox>
+		  	</ion-item>
+		</ion-list>
+	  </label>
+	  <button class="button button-block button-positive" ng-click="addActivity()">Add activity</button>
+  </ion-content>
+</ion-view>

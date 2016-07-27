@@ -1,0 +1,14 @@
+<ion-view view-title="{{activity.title}}">
+   <ion-nav-buttons side="secondary">
+    <button ng-click="logout()" class="button button-icon ion-log-out"></button>
+  </ion-nav-buttons>
+  <ion-content class="padding has-subheader">
+
+    {{activity.title}}
+
+    <img ng-src="{{activity.face}}" style="width: 64px; height: 64px">
+    <p>
+      {{activity.description}}
+    </p>
+  </ion-content>
+</ion-view>

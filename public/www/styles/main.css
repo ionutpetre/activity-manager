@@ -1,0 +1,13 @@
+.activities.finishedItem {
+	background: blue !important;
+}
+
+.activities.unfinishedItem {
+	background: red !important;
+}
+
+.addActivity .item-stacked-label .input-label, .item-stacked-label .icon {
+}
+
+.addActivity.card.list-inset {
+}
